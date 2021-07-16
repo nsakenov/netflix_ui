@@ -54,6 +54,15 @@ class _HomeScreenState extends State<HomeScreen> {
           //to test the app bar chainging its color
           SliverToBoxAdapter(
             child: ContentHeader(featuredContent: sintelContent),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.only(top: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: Previews(
+                title: 'Previews',
+                contentList: previews,
+              ),
+            ),
           )
         ],
       ),
