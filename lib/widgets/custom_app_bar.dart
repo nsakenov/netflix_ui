@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget {
         vertical: 10.0,
         horizontal: 24.0,
       ),
-      color: Colors.red.withOpacity(
+      color: Colors.black.withOpacity(
         (scrollOffset / 350).clamp(0, 1).toDouble(),
       ),
       child: SafeArea(
