@@ -91,13 +91,16 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
   @override
   void initState() {
     super.initState();
+
     _videoPlayerController = VideoPlayerController.network(
         widget.featuredContent.videoUrl ?? 'url_placeholder')
-      ..initialize();
-    setState(() {
-      _videoPlayerController.setVolume(0);
-      _videoPlayerController.setLooping(true);
-    });
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+        setState(() {
+          _videoPlayerController.setVolume(0);
+          _videoPlayerController.play();
+        });
+      });
   }
 
   @override
