@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:netflix_ui/models/models.dart';
 import 'package:netflix_ui/widgets/widgets.dart';
 import 'package:video_player/video_player.dart';
-import 'dart:io';
 
 class ContentHeader extends StatelessWidget {
   final Content featuredContent;
@@ -93,13 +92,12 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
   void initState() {
     super.initState();
     _videoPlayerController = VideoPlayerController.network(
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4')
-      // widget.featuredContent.videoUrl ?? 'url_placeholder')
-      ..initialize().then((_) {
-        setState(() {});
-      })
-      ..setVolume(0);
-    // _videoPlayerController.play();
+        widget.featuredContent.videoUrl ?? 'url_placeholder')
+      ..initialize();
+    setState(() {
+      _videoPlayerController.setVolume(0);
+      _videoPlayerController.setLooping(true);
+    });
   }
 
   @override
@@ -112,9 +110,11 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _videoPlayerController.value.isPlaying
-            ? _videoPlayerController.pause()
-            : _videoPlayerController.play();
+        setState(() {
+          _videoPlayerController.value.isPlaying
+              ? _videoPlayerController.pause()
+              : _videoPlayerController.play();
+        });
       },
       child: Stack(
         alignment: Alignment.bottomLeft,
@@ -169,7 +169,55 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                 const SizedBox(height: 20.0),
                 Row(
                   children: [
-                    _PlayButton(),
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _videoPlayerController.value.isPlaying
+                              ? _videoPlayerController.pause()
+                              : _videoPlayerController.play();
+                        });
+                      },
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                        ),
+                      ),
+                      child: Container(
+                        width: 80.0,
+                        height: 30.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              _videoPlayerController.value.isPlaying
+                                  ? Icons.pause
+                                  : Icons.play_arrow,
+                              size: 30.0,
+                              color: Colors.black,
+                            ),
+                            SizedBox(width: 5),
+                            Text(
+                              _videoPlayerController.value.isPlaying
+                                  ? 'Pause'
+                                  : 'Play',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                     const SizedBox(width: 16.0),
                     TextButton(
                       onPressed: () => print('more info'),
