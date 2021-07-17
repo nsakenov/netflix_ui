@@ -8,6 +8,7 @@ class Previews extends StatelessWidget {
   Previews({
     required this.title,
     required this.contentList,
+    Key? key,
   });
 
   @override

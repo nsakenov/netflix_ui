@@ -10,6 +10,7 @@ class ContentList extends StatelessWidget {
     required this.title,
     required this.contentList,
     this.isOriginals = false,
+    Key? key,
   });
 
   @override
