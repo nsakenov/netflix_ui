@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_ui/models/models.dart';
 import 'package:netflix_ui/widgets/widgets.dart';
 import 'package:video_player/video_player.dart';
+import 'dart:io';
 
 class ContentHeader extends StatelessWidget {
   final Content featuredContent;
@@ -92,19 +93,19 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
   void initState() {
     super.initState();
     _videoPlayerController = VideoPlayerController.network(
-        widget.featuredContent.videoUrl ?? 'url_placeholder')
-      ..initialize().then(
-        (_) {
-          setState(() {});
-        },
-      )
+        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4')
+      // widget.featuredContent.videoUrl ?? 'url_placeholder')
+      ..initialize().then((_) {
+        setState(() {});
+      })
       ..setVolume(0);
+    // _videoPlayerController.play();
   }
 
   @override
   void dispose() {
-    _videoPlayerController.dispose();
     super.dispose();
+    _videoPlayerController.dispose();
   }
 
   @override
