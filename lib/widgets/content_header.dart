@@ -133,6 +133,24 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                     fit: BoxFit.cover,
                   ),
           ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: -2.0,
+            child: AspectRatio(
+              aspectRatio: _videoPlayerController.value.isInitialized
+                  ? _videoPlayerController.value.aspectRatio
+                  : 2.344,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.black, Colors.transparent],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter),
+                ),
+              ),
+            ),
+          ),
           Container(
             height: 500.0,
             decoration: const BoxDecoration(
