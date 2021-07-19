@@ -1,16 +1,8 @@
-# netflix_ui
+tutorial: https://github.com/MarcusNg/flutter_netflix_responsive_ui/
 
-A new Flutter project.
+![web](https://user-images.githubusercontent.com/22214915/126162291-399a190d-aa34-43e0-b778-34e24c3049a7.png)
 
-## Getting Started
+![mobile0](https://user-images.githubusercontent.com/22214915/126162272-17f4ca63-25ae-4906-8de6-e4c51a3356e8.png)
 
-This project is a starting point for a Flutter application.
+![mobile1](https://user-images.githubusercontent.com/22214915/126162286-785cbaf9-f2c2-4ec7-8c9d-01472c1b2076.png)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
